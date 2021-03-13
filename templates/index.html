@@ -1,39 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Tratamientos | CLIDENTE</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="/static/main.css" />
-    <script src="https://kit.fontawesome.com/836a943e18.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.ico" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clidente</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
 
-    <header>
-        <div class="encabezado">
-            <h1>CLIDENTE</h1>
-            <nav>
-                <div class="nav-brand">
-                    <a href="index.html">
-                        Inicio
-                    </a>
-                    <a href="about.html">
-                        Conócenos
-                    </a>
-                    <a href="productos.html">
-                        Tratamientos
-                    </a>
-                    <a href="contacto.html">
-                        Contacto
-                    </a>
-                    <a href="cita.html">
-                        Reserva tu cita
-                    </a>
-            </nav>
-        </div>
+    <div class="topbar">
+        <img src="/static/images/clidente.png" alt="Clidente">
+        <h1 id="title">Clidente</h1>
+    </div>
 
-    </header>
+
+    <div name="linkers" class="nav">
+        <a href="#" onclick="hideDivById('inicio')">Inicio</a>
+        <a href="#" onclick="hideDivById('productos')">Tratamientos</a>
+        <a href="#" onclick="hideDivById('about')">Conócenos</a>
+        <a href="#" onclick="hideDivById('contacto')">Contacto</a>
+        <a href="#" onclick="hideDivById('cita')">Haz tu cita</a>
+
+    </div>
+
+    <div class="main">
+
+        <div style="display:block" id="inicio" name="pages" w3-include-html="{{url_for('inicio')}}"></div>
+        <div style="display:none" id="productos" name="pages" w3-include-html="{{url_for('productos')}}"></div>
+        <div style="display:none" id="about" name="pages" w3-include-html="{{url_for('about')}}"></div>
+        <div style="display:none" id="contacto" name="pages" w3-include-html="{{url_for('contacto')}}"></div>
+        <div style="display:none" id="cita" name="pages" w3-include-html="{{url_for('cita')}}"></div>
+
+
+    </div>
+
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+
+<footer><a href="https://www.facebook.com/clinicadentalclidente/">Facebook</a></footer>
+
+</html>
