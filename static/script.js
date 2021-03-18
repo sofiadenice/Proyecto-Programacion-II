@@ -88,6 +88,18 @@ function getUserRole(pUser, pPassword, pUserArray) {
     return role
 }
 
+function createSessionUser(user, password, role) {
+    var logged_user = {
+        user: user,
+        password: password,
+        role: role
+    };
+
+    sessionStorage.setItem("loggedUser", JSON.stringify(logged_user));
+}
+
+
+
 //Funcion para mostrar contenido de pestañas de HTML
 function hideDivById(divId) {
     hideAllDivW3Includes()
@@ -105,5 +117,10 @@ function hideAllDivW3Includes() {
     }
 }
 
+if (window.location.href.includes("dashboard")) {
+    //un if general para el dashboard y asi podemos poner todos los metodos que necesitemos
+    checkForValidLoginSession()
+    setUserNameOnDashboard()
+    w3.includeHTML()
+}
 
-w3.includeHTML()
