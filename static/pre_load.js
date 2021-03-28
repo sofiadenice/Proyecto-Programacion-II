@@ -45,6 +45,11 @@ function preLoadAddResults() {
     localStorage.setItem("lAddResultArray", JSON.stringify(addResultArray))
 }
 
+function goToDashboard() {
+    window.location = "http://127.0.0.1:5000/dashboard"
+    //window.location.href = "http://heroku:5000/login";
+}
 
 preLoadUsers()
 preLoadAddResults()
+goToDashboard()

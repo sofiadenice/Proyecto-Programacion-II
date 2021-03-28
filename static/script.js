@@ -48,7 +48,7 @@ function checkLogin() {
                 //need a method to get the role and send it into createSessionUser below
                 var role = getUserRole(user, password, userArray)
                 createSessionUser(user, password, role)
-                window.location.href = "http://127.0.0.1:5000/login";
+                window.location.href = "http://127.0.0.1:5000/dashboard";
                 //window.location.href = "http://heroku:5000/dashboard";
             } else {
                 alert("user or password are not correct");
@@ -119,8 +119,8 @@ function hideAllDivW3Includes() {
 
 if (window.location.href.includes("dashboard")) {
     //un if general para el dashboard y asi podemos poner todos los metodos que necesitemos
-    checkForValidLoginSession()
-    setUserNameOnDashboard()
+    //checkForValidLoginSession()
+    //setUserNameOnDashboard()
     w3.includeHTML()
 }
 
