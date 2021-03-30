@@ -30,6 +30,19 @@
 
     </div>
 
+    <div><span id="user"></span></div>
+
+    <div class="main">
+    
+        <div class="main__section" id="main_section">
+            <div style="display:block" id="client" name="w3includes" w3-include-html="{{url_for('addcli')}}">
+            </div>
+            <div style="display:block" id="admin" name="w3includes" w3-include-html="{{url_for('addadm')}}">
+            </div>
+        </div>
+
+    </div>
+
     <div class="main">
 
         <div style="display:block" id="inicio" name="pages" w3-include-html="{{url_for('inicio')}}"></div>

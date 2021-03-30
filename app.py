@@ -50,6 +50,14 @@ def register():
 def dashboard():
     return render_template("dashboard.html")
 
+@app.route("/add_cli")
+def addcli():
+    return render_template("addcli.html")
+
+@app.route("/add_adm")
+def addadm():
+    return render_template("addadm.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
