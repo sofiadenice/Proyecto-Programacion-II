@@ -6,11 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clidente | Citas</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
     <h2>Reserva tu cita</h2>
-    <form action="mailto" id="cita">
+
+    <form id="cita">
+        <label>Fecha*:</label> <br>
+        <input type="date" id="fecha"><br>
         <label for="nombre">Nombre*:</label> <br>
         <input type="text" name="nombre" id="nombre"> <br>
         <label for="apellido">Apellido*:</label> <br>
@@ -19,8 +23,8 @@
         <input type="text" name="correo" id="correo"> <br>
         <label for="telefono">Número telefónico*:</label> <br>
         <input type="text" name="telefono" id="telefono"> <br>
-        <label for="motivo">Motivo de la cita*:</label> <br>
-        <input type="text" name="motivo" id="motivo"> <br>
+        <label for="">Motivo de la cita*:</label><br>
+        <textarea name="motivo" id="motivo" class="motivo" rows="6" cols="22"></textarea><br>
         <label for="hora">Selecciona el horario que prefieras*:</label>
         <select name="hora" id="hora">
             <option value="hora1">9:00 AM - 10:00 AM</option>
@@ -30,7 +34,8 @@
             <option value="hora5">2:00 PM - 3:00 PM</option>
             <option value="hora6">3:00 PM - 4:00 PM</option>
             <option value="hora7">4:00 PM - 5:00 PM</option>
-        </select>
+        </select> <br>
+        <button onclick="sendMail()">Send</button>
     </form>
 
 </body>

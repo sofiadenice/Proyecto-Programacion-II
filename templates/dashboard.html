@@ -14,12 +14,10 @@
     <div class="topbar">
         <img src="/static/images/clidente.png" alt="Clidente">
         <h1 id="title">Clidente</h1>
-        <form id="login">
-            <label for="usuario">Usuario:</label>
-            <input type="text" id="usuario" name="usuario"> <br>
-            <label for="contra">Contraseña:</label>
-            <input type="text" id="contra" name="contra"> <br>
-        </form>
+        <div class="container" id="login">
+            <a href="{{url_for('login')}}">login</a>
+            <img src="{{url_for('static', filename='images/avatar.png')}}" width="80" height="80" alt="">
+        </div>
     </div>
 
 
@@ -43,15 +41,21 @@
 
     </div>
 
-    <div class="container" id="login">
-        <a href="{{url_for('login')}}">login</a>
-        <img src="{{url_for('static', filename='images/avatar.svg')}}" width="180" height="180" alt="">
-    </div>
+    <footer>
+        <a href="https://www.facebook.com/clinicadentalclidente/"><img src="/static/images/fb.png" alt="Facebook"
+                width="30" height="30"></a>
+        <a href="https://www.instagram.com/clidente_sv/?hl=es"><img src="/static/images/instagram.png" alt="Instagram"
+                width="30" height="30"></a>
+        <a href="https://wa.me/+50370842286/"><img src="/static/images/wha.png" alt="Whatsapp" width="30"
+                height="30"></a>
+        <h4 class="telefono">Números de teléfono:</h4>
+        <a class="tel" href="tel:+50322290111">+503 2229 &#8211; 0111</a><br>
+        <a class="tel" href="tel:+50322290899">+503 2229 &#8211; 0899</a><br>
+        <a class="tel" href="tel:+50370842286">+503 7084 &#8211; 2286</a><br>
+    </footer>
 
     <script src="https://www.w3schools.com/lib/w3.js"></script>
     <script src="/static/script.js"></script>
 </body>
-
-<footer><a href="https://www.facebook.com/clinicadentalclidente/">Facebook</a></footer>
 
 </html>

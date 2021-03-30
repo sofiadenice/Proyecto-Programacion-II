@@ -10,12 +10,24 @@
 
 <body>
     <h1>¿Tienes preguntas? Contáctanos</h1>
-    <form action="mailto:tatianabarahona57@gmail.com" id="contacto">
-        <label for="correoPregunta">Ingresa tu correo electrónico:</label><br>
-        <input type="text" name=correoPregunta id=correoPregunta><br>
-        <label for="pregunta">Ingresa tu pregunta:</label><br>
-        <textarea name="pregunta" id="pregunta" cols="30" rows="10"></textarea><br>
-        <input type="submit" value=Submit>
+    <form id="form">
+        <div class="input-container">
+            <label for="">Nombre</label><br>
+            <input type="text" name="nombre" id="nombre" class="input"> <br>
+        </div>
+        <div class="input-container">
+            <label for="">Correo</label><br>
+            <input type="email" name="email" id="email" class="input"><br>
+        </div>
+        <div class="input-container">
+            <label for="">Teléfono de contacto</label><br>
+            <input type="tel" name="phone" id="phone" class="input"><br>
+        </div>
+        <div class="input-container textarea">
+            <label for="">Mensaje</label><br>
+            <textarea name="message" id="message" class="input" rows="5" cols="40"></textarea><br>
+        </div>
+        <button onclick="sendMail()">Send</button>
     </form>
 </body>
 
