@@ -16,6 +16,8 @@
         <h1 id="title">Clidente</h1>
         <div class="container" id="login">
             <a href="{{url_for('login')}}">login</a>
+            <a onclick="logout()" href="">logout</a>
+            
             <img src="{{url_for('static', filename='images/avatar.png')}}" width="80" height="80" alt="">
         </div>
     </div>
@@ -25,13 +27,14 @@
         <a href="#" onclick="hideDivById('inicio')">Inicio</a>
         <a href="#" onclick="hideDivById('productos')">Tratamientos</a>
         <a href="#" onclick="hideDivById('about')">Conócenos</a>
-        <a href="#" onclick="hideDivById('contacto')">Contacto</a>
+        <a href="#" onclick="hideDivById('contacto')">Contáctanos</a>
         <a href="#" onclick="hideDivById('cita')">Haz tu cita</a>
 
     </div>
 
     <div><span id="user"></span></div>
 
+    <!--
     <div class="main">
     
         <div class="main__section" id="main_section">
@@ -42,6 +45,7 @@
         </div>
 
     </div>
+    -->
 
     <div class="main">
 
@@ -52,6 +56,10 @@
         <div style="display:none" id="cita" name="pages" w3-include-html="{{url_for('cita')}}"></div>
 
 
+    </div>
+
+    <div>
+        <div id="registro"><a href="{{url_for('registro')}}">Registro</a></div>
     </div>
 
     <footer>

@@ -106,6 +106,13 @@ if (window.location.href.includes("dashboard")) {
     w3.includeHTML()
 }
 
+if (window.location.href.includes("registro")) {
+    //un if general para el dashboard y asi podemos poner todos los metodos que necesitemos
+    checkForValidLoginSession()
+    setUserNameOnRegistro()
+    w3.includeHTML()
+}
+
 function checkForValidLoginSession() {
     /*
     tengo que ir a buscar el elemento wUserArray, si no esta vacio
@@ -128,7 +135,18 @@ function setUserNameOnDashboard() {
     var userSpan = document.getElementById("user")
     userSpan.innerText = "Hello, " + currentRole + " " + currentUser
 
-    modifyDashboardForRole(currentRole)
+    //modifyDashboardForRole(currentRole)
+}
+
+function setUserNameOnRegistro() {
+    var userArray = getCurrentLoggedUser()
+    var currentUser = userArray.user
+    var currentRole = userArray.role
+
+    var userSpan = document.getElementById("user")
+    userSpan.innerText = "Hello, " + currentRole + " " + currentUser
+
+    modifyRegistroForRole(currentRole)
 }
 
 function getCurrentLoggedUser() {
@@ -136,7 +154,7 @@ function getCurrentLoggedUser() {
     return currentLoggedUser
 }
 
-function modifyDashboardForRole(pCurrentRole) {
+function modifyRegistroForRole(pCurrentRole) {
     var add_admin = document.getElementById("admin")
     var add_client = document.getElementById("client")
     if (pCurrentRole === "admin") {
@@ -152,7 +170,7 @@ function modifyDashboardForRole(pCurrentRole) {
 
 function logout() {
     sessionStorage.removeItem("loggedUser")
-    window.location.href = "http://localhost:5000/"
+    window.location.href = "http://127.0.0.1:5000/"
     //window.location.href = "http://heroku:5000/";
 }
 
@@ -163,7 +181,7 @@ function logout() {
 /*
 ************* dashboard functionality add admin
 */
-if (window.location.href.includes("dashboard")) {
+if (window.location.href.includes("registro")) {
     var currentLoggedUser = getCurrentLoggedUser()
     if (currentLoggedUser.role === "admin") {
 
@@ -181,8 +199,8 @@ if (window.location.href.includes("dashboard")) {
 
 function loadAddDataFromAllUsers() {
     var addResultArray
-    if (localStorage.getItem("lAddResultArray") !== null) {
-        addResultArray = JSON.parse(localStorage.getItem("lAddResultArray"));
+    if (localStorage.getItem("lAddCitaArray") !== null) {
+        addResultArray = JSON.parse(localStorage.getItem("lAddCitaArray"));
     }
 
     var userTableAdmin = document.getElementById("userTableAdmin")
@@ -194,11 +212,15 @@ function loadAddDataFromAllUsers() {
         row = userTableAdmin.insertRow(1)
 
         row.insertCell(0).innerHTML = addResult.user;
-        row.insertCell(1).innerHTML = addResult.num1;
-        row.insertCell(2).innerHTML = addResult.num2;
-        row.insertCell(3).innerHTML = addResult.result;
-        row.insertCell(4).innerHTML = "<button onclick='modifyOnElementByIndex(" + index + ")'>modify</button><input type='hidden' id='" + index + "'>";
-        row.insertCell(5).innerHTML = "<button onclick='deleteElementByIndex(" + index + ")'>delete</button><input type='hidden' id='" + index + "'>";
+        row.insertCell(1).innerHTML = addResult.fecha;
+        row.insertCell(2).innerHTML = addResult.nombre;
+        row.insertCell(3).innerHTML = addResult.apellido;
+        row.insertCell(4).innerHTML = addResult.correo;
+        row.insertCell(5).innerHTML = addResult.teléfono;
+        row.insertCell(6).innerHTML = addResult.motivo;
+        row.insertCell(7).innerHTML = addResult.hora;
+        row.insertCell(8).innerHTML = "<button onclick='modifyOnElementByIndex(" + index + ")'>modify</button><input type='hidden' id='" + index + "'>";
+        row.insertCell(9).innerHTML = "<button onclick='deleteElementByIndex(" + index + ")'>delete</button><input type='hidden' id='" + index + "'>";
         index++
     }
 }
@@ -256,7 +278,7 @@ function getElementParent(pElement, pGen) {
 /*
 ************* dashboard functionality add client
 */
-if (window.location.href.includes("dashboard")) {
+if (window.location.href.includes("registro")) {
     var currentLoggedUser = getCurrentLoggedUser()
     var currentUser = currentLoggedUser.user
     if (currentLoggedUser.role === "client") {
@@ -264,7 +286,7 @@ if (window.location.href.includes("dashboard")) {
         const elementToObserve = document.getElementById("client")
 
         const observer = new MutationObserver(function () {
-            loadAddDataByUser(currentUser)
+            loadCitaDataByUser(currentUser)
             observer.disconnect()
         });
 
@@ -292,6 +314,61 @@ function loadAddDataByUser(pCurrentUser) {
     }
 }
 
+function loadCitaDataByUser(pCurrentUser) {
+    var citaArray
+    if (localStorage.getItem("lAddCitaArray") !== null) {
+        citaArray = JSON.parse(localStorage.getItem("lAddCitaArray"));
+    }
+
+    var userTableClient = document.getElementById("userTableClient")
+    var row
+
+    for (var cita of citaArray) {
+        if (cita.user === pCurrentUser) {
+            row = userTableClient.insertRow(1)
+
+            row.insertCell(0).innerHTML = cita.fecha;
+            row.insertCell(1).innerHTML = cita.hora;
+            row.insertCell(2).innerHTML = cita.motivo;
+            
+            
+        }
+    }
+}
+
+function agregarCita(){
+    var fecha = document.getElementById("fecha").value
+    var nombre = document.getElementById("name").value
+    var apellido = document.getElementById("apellido").value
+    var correo = document.getElementById("correo").value
+    var telefono = document.getElementById("telefono").value
+    var motivo = document.getElementById("motivo").value
+    var horan = document.getElementById("hora").value
+    var hora = ""
+    if (horan == "hora1") {
+        hora = "9:00 AM - 10:00 AM"
+    } else if (horan == "hora2") {
+        hora = "10:00 AM - 11:00 AM"
+    } else if (horan == "hora3") {
+        hora = "11:00 AM - 12:00 PM"
+    } else if (horan == "hora4") {
+        hora = "1:00 PM - 2:00 PM"
+    } else if (horan == "hora5") {
+        hora = "2:00 PM - 3:00 PM"
+    } else if (horan == "hora6") {
+        hora = "3:00 PM - 4:00 PM"
+    } else if (horan == "hora7") {
+        hora = "4:00 PM - 5:00 PM"
+    } 
+    
+    cleanFormCita()
+    alert(fecha)
+    addResultToCitaTable(fecha, nombre, apellido, correo, telefono, motivo, hora)
+    addResultToCitaStorage(fecha, nombre, apellido, correo, telefono, motivo, hora)
+    return
+    alert("Pausa")
+}
+
 function add() {
     var num1 = parseInt(document.getElementById("number1").value)
     var num2 = parseInt(document.getElementById("number2").value)
@@ -307,6 +384,29 @@ function cleanForm() {
     document.getElementById("number2").value = ""
 }
 
+function cleanFormCita() {
+    document.getElementById("fecha").value = ""
+    document.getElementById("name").value = ""
+    document.getElementById("apellido").value = ""
+    document.getElementById("correo").value = ""
+    document.getElementById("telefono").value = ""
+    document.getElementById("motivo").value = ""
+}
+
+function addResultToCitaTable(fecha, nombre, apellido, correo, telefono, motivo, hora) {
+    
+    var myTable = document.getElementById("userTableClient")
+
+    var row = myTable.insertRow(1)
+
+    row.insertCell(0).innerHTML = fecha;
+    row.insertCell(1).innerHTML = hora;
+    row.insertCell(2).innerHTML = motivo;
+
+    document.getElementById("proximaCita").style.display = "block"
+
+}
+
 function addResultToTable(pNum1, pNum2, pResult) {
     var myTable = document.getElementById("userTableClient")
 
@@ -317,7 +417,8 @@ function addResultToTable(pNum1, pNum2, pResult) {
     row.insertCell(2).innerHTML = pResult;
 }
 
-function addResultToStorage(pNum1, pNum2, pResult) {
+
+function addResultToStorage(num1, num2, result) {
     var addResultArray = []
 
     //obtener el current logged user
@@ -337,6 +438,32 @@ function addResultToStorage(pNum1, pNum2, pResult) {
 
     addResultArray.push(current_add_result)
     localStorage.setItem("lAddResultArray", JSON.stringify(addResultArray));
+}
+
+function addResultToCitaStorage(fecha, nombre, apellido, correo, telefono, motivo, hora){
+    var addCitaArray = []
+
+    //obtener el current logged user
+    var currentLoggedUser = getCurrentLoggedUser()
+    //console.log(currentLoggedUser.user)
+
+    if (localStorage.getItem("lAddCitaArray") !== null) {
+        addCitaArray = JSON.parse(localStorage.getItem("lAddCitaArray"));
+    }
+
+    var current_add_cita = {
+        user: currentLoggedUser.user,
+        fecha: fecha,
+        nombre: nombre,
+        apellido: apellido,
+        correo: correo,
+        telefono: telefono,
+        motivo: motivo,
+        hora: hora
+    }
+
+    addCitaArray.push(current_add_cita)
+    localStorage.setItem("lAddCitaArray", JSON.stringify(addCitaArray));
 }
 
 //Funcion para mostrar contenido de pestañas de HTML

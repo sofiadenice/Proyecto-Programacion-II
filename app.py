@@ -31,6 +31,11 @@ def contacto():
     return render_template("contacto.html")
 
 
+@app.route("/registro")
+def registro():
+    return render_template("registro.html")
+
+
 @app.route("/about")
 def about():
     return render_template("about.html")
