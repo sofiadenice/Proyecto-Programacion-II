@@ -52,4 +52,3 @@ function goToDashboard() {
 
 preLoadUsers()
 preLoadAddResults()
-goToDashboard()

@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/static/style.css">
-        <script src="/static/script.js" defer></script>
+        <script src="/static/script.js"></script>
         <title>Clidente</title>
     </head>
 
@@ -34,30 +34,32 @@
             </div>
         </nav>
 
-        <div class="main">
+        <div class="main1">
+
             <div style="display:block" id="inicio" name="pages" w3-include-html="{{url_for('inicio')}}"></div>
             <div style="display:none" id="productos" name="pages" w3-include-html="{{url_for('productos')}}"></div>
             <div style="display:none" id="about" name="pages" w3-include-html="{{url_for('about')}}"></div>
-            <div style="display:none" id="registro" name="pages" w3-include-html="{{url_for('registro')}}"></div>
-            <div style="display:none" id="cita" name="pages" w3-include-html="{{url_for('cita')}}">
+            <div style="display:none" id="contacto" name="pages" w3-include-html="{{url_for('contacto')}}"></div>
+            <div style="display:none" id="cita" name="pages" w3-include-html="{{url_for('cita')}}"></div>
+    
+    
         </div>
 
-        <footer>
-            <a href="https://www.facebook.com/clinicadentalclidente/"><img src="/static/images/fb.png" alt="Facebook"
-                    width="30" height="30"></a>
-            <a href="https://www.instagram.com/clidente_sv/?hl=es"><img src="/static/images/instagram.png" alt="Instagram"
-                    width="30" height="30"></a>
-            <a href="https://wa.me/+50370842286/"><img src="/static/images/wha.png" alt="Whatsapp" width="30"
-                    height="30"></a>
-            <h4 class="telefono">Números de teléfono:</h4>
-            <a class="tel" href="tel:+50322290111">+503 2229 &#8211; 0111</a><br>
-            <a class="tel" href="tel:+50322290899">+503 2229 &#8211; 0899</a><br>
-            <a class="tel" href="tel:+50370842286">+503 7084 &#8211; 2286</a><br>
-        </footer>
+        <div class="footer-basic">
+            <footer>
+                <div class="social">
+                    <a href="https://www.facebook.com/clinicadentalclidente/"><span class="iconify" data-icon="ant-design:facebook-filled" data-inline="false"></span></a>
+                    <a href="https://www.instagram.com/clidente_sv/"><span class="iconify" data-icon="ant-design:instagram-filled" data-inline="false"></span></a>
+                    <a href="https://wa.me/+50370842286/"><span class="iconify" data-icon="fa-brands:whatsapp-square" data-inline="false"></span></a>
+                </div>
+                <p class="copyright">Clidente® 2021</p>
+            </footer>
+        </div>
 
+        <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
         <script src="https://www.w3schools.com/lib/w3.js"></script>
         <script src="{{url_for('static', filename='pre_load.js')}}"></script>
-        <script src="{{url_for('static', filename='script.js')}}"></script>
+        <script src="/static/script.js"></script>
 
     </body>
 
