@@ -11,6 +11,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: auto;
 }
 
+/*EDUARDO*/
 * {
     box-sizing: border-box;
 }
@@ -24,13 +25,12 @@ body {
     width: 100%;
     display:flex;
     /*position: relative;*/
-    position: fixed;
+    position: relative;
     justify-content: /*space-between*/center;
     align-items: center;
     background-color: #173A7C;
     color: white;
-    /*left: 0%;*/
-    top: 0px;
+    left: 0%;
     margin: 0%;
 }
 
