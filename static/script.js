@@ -1,4 +1,9 @@
+const toggleButton = document.getElementsByClassName('menu-desplegable')[0]
+const navbarLinks = document.getElementsByClassName('nav')[0]
 
+toggleButton.addEventListener('click', () => {
+  navbarLinks.classList.toggle('active')
+})
 
 /*
 ************* register functionality begin
@@ -482,5 +487,3 @@ function hideAllDivW3Includes() {
         element.style.display = "none"
     }
 }
-
-

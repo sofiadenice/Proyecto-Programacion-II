@@ -1,64 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clidente</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/style.css">
+        <script src="/static/script.js" defer></script>
+        <title>Clidente</title>
+    </head>
 
-<body>
+    <body>
 
-    <div class="topbar" id="topbar">
-        <img src="/static/images/clidente.png" alt="Clidente">
-        <h1 id="title">Clidente</h1>
-        <div class="container" id="login">
-            <a href="{{url_for('login')}}">login</a>
-            <img src="{{url_for('static', filename='images/avatar.png')}}" width="80" height="80" alt="">
+        <nav class="cabecera">
+            <div class="empresa">Clidente</div>
+            <a href="#" class="menu-desplegable">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+            <div name="linkers" class="nav">
+            <ul>
+                <li><a href="#" onclick="hideDivById('inicio')">Inicio</a></li>
+                <li><a href="#" onclick="hideDivById('productos')">Tratamientos</a></li>
+                <li><a href="#" onclick="hideDivById('about')">Conócenos</a></li>
+                <li><a href="#" onclick="hideDivById('contacto')">Contacto</a></li>
+                <li><a href="#" onclick="hideDivById('cita')">Haz tu cita</a></li>
+                <div class="container" id="login">
+                    <!--<li><img src="{{url_for('static', filename='images/unnamed.png')}}" width="40" height="40" alt=""></li>-->
+                    <li><a href="{{url_for('login')}}">Login</a></li>
+                </div>
+            </ul>
+            </div>
+        </nav>
+
+        <div class="main">
+            <div style="display:block" id="inicio" name="pages" w3-include-html="{{url_for('inicio')}}"></div>
+            <div style="display:none" id="productos" name="pages" w3-include-html="{{url_for('productos')}}"></div>
+            <div style="display:none" id="about" name="pages" w3-include-html="{{url_for('about')}}"></div>
+            <div style="display:none" id="registro" name="pages" w3-include-html="{{url_for('registro')}}"></div>
+            <div style="display:none" id="cita" name="pages" w3-include-html="{{url_for('cita')}}">
         </div>
-    </div>
 
+        <footer>
+            <a href="https://www.facebook.com/clinicadentalclidente/"><img src="/static/images/fb.png" alt="Facebook"
+                    width="30" height="30"></a>
+            <a href="https://www.instagram.com/clidente_sv/?hl=es"><img src="/static/images/instagram.png" alt="Instagram"
+                    width="30" height="30"></a>
+            <a href="https://wa.me/+50370842286/"><img src="/static/images/wha.png" alt="Whatsapp" width="30"
+                    height="30"></a>
+            <h4 class="telefono">Números de teléfono:</h4>
+            <a class="tel" href="tel:+50322290111">+503 2229 &#8211; 0111</a><br>
+            <a class="tel" href="tel:+50322290899">+503 2229 &#8211; 0899</a><br>
+            <a class="tel" href="tel:+50370842286">+503 7084 &#8211; 2286</a><br>
+        </footer>
 
-    <div name="linkers" class="nav">
-        <a href="#" onclick="hideDivById('inicio')">Inicio</a>
-        <a href="#" onclick="hideDivById('productos')">Tratamientos</a>
-        <a href="#" onclick="hideDivById('about')">Conócenos</a>
-        <a href="#" onclick="hideDivById('contacto')">Contacto</a>
-        <a href="#" onclick="hideDivById('cita')">Haz tu cita</a>
+        <script src="https://www.w3schools.com/lib/w3.js"></script>
+        <script src="{{url_for('static', filename='pre_load.js')}}"></script>
+        <script src="{{url_for('static', filename='script.js')}}"></script>
 
-    </div>
-
-    <div class="main">
-
-        <div style="display:block" id="inicio" name="pages" w3-include-html="{{url_for('inicio')}}"></div>
-        <div style="display:none" id="productos" name="pages" w3-include-html="{{url_for('productos')}}"></div>
-        <div style="display:none" id="about" name="pages" w3-include-html="{{url_for('about')}}"></div>
-        <div style="display:none" id="registro" name="pages" w3-include-html="{{url_for('registro')}}"></div>
-        <div style="display:none" id="cita" name="pages" w3-include-html="{{url_for('cita')}}"></div>
-
-
-    </div>
-
-
-    <footer>
-        <a href="https://www.facebook.com/clinicadentalclidente/"><img src="/static/images/fb.png" alt="Facebook"
-                width="30" height="30"></a>
-        <a href="https://www.instagram.com/clidente_sv/?hl=es"><img src="/static/images/instagram.png" alt="Instagram"
-                width="30" height="30"></a>
-        <a href="https://wa.me/+50370842286/"><img src="/static/images/wha.png" alt="Whatsapp" width="30"
-                height="30"></a>
-        <h4 class="telefono">Números de teléfono:</h4>
-        <a class="tel" href="tel:+50322290111">+503 2229 &#8211; 0111</a><br>
-        <a class="tel" href="tel:+50322290899">+503 2229 &#8211; 0899</a><br>
-        <a class="tel" href="tel:+50370842286">+503 7084 &#8211; 2286</a><br>
-    </footer>
-
-
-    <script src="https://www.w3schools.com/lib/w3.js"></script>
-    <script src="{{url_for('static', filename='pre_load.js')}}"></script>
-    <script src="{{url_for('static', filename='script.js')}}"></script>
-</body>
+    </body>
 
 </html>

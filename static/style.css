@@ -10,3 +10,133 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     top: 0;
     width: auto;
 }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.cabecera {
+    width: 100%;
+    display:flex;
+    /*position: relative;*/
+    position: fixed;
+    justify-content: /*space-between*/center;
+    align-items: center;
+    background-color: #173A7C;
+    color: white;
+    /*left: 0%;*/
+    top: 0px;
+    margin: 0%;
+}
+
+.empresa {
+    font-size: 1.5rem;
+    margin: 0.4rem;
+}
+
+.nav {
+    height: 100%;
+}
+
+.nav ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav li {
+    list-style: none;
+}
+
+.nav li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+}
+
+.nav li img{
+    padding-top: 10px;
+}
+
+.nav ul li ul{
+    display: flex;
+    flex-direction: column;
+}
+
+.nav ul li ul{
+    position: absolute;
+}
+
+.menu-desplegable {
+    position: absolute;
+    top: .75rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.menu-desplegable .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+@media (max-width: 800px) {
+    .cabecera {
+        flex-direction: column;
+        align-items: center; 
+    }
+
+    .menu-desplegable {
+        display: flex;
+    }
+
+    .nav {
+        display: none;
+        width: 100%;
+    }
+
+    .nav ul {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .nav ul li {
+        text-align: center;
+    }
+
+    .nav ul li a {
+        padding: .5rem 1rem;
+    }
+
+    .nav.active {
+        display: flex;
+    }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=PT+Serif:ital,wght@0,700;1,700&display=swap');
+
+.cabecera {
+    font-family: 'PT Serif', serif;;
+    font-style: italic;
+    font-weight: 700;
+}
+
+nav a:hover{
+    color:#00AEBA;
+    transition: 0.2s;
+}
+
+html {
+    background-color: rgb(230, 223, 223);
+}

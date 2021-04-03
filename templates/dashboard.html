@@ -5,34 +5,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clidente</title>
     <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js" defer></script>
+    <title>Clidente</title>
 </head>
 
 <body>
 
-    <div class="topbar">
-        <img src="/static/images/clidente.png" alt="Clidente">
-        <h1 id="title">Clidente</h1>
-        <div class="container" id="login">
-            <a href="{{url_for('login')}}">login</a>
-            <a onclick="logout()" href="">logout</a>
-            
-            <img src="{{url_for('static', filename='images/avatar.png')}}" width="80" height="80" alt="">
+    <nav class="cabecera">
+        <div class="empresa">Clidente</div>
+        <a href="#" class="menu-desplegable">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </a>
+        <div name="linkers" class="nav">
+        <ul>
+            <li><a href="#" onclick="hideDivById('inicio')">Inicio</a></li>
+            <li><a href="#" onclick="hideDivById('productos')">Tratamientos</a></li>
+            <li><a href="#" onclick="hideDivById('about')">Conócenos</a></li>
+            <li><a href="#" onclick="hideDivById('contacto')">Contacto</a></li>
+            <li><a href="#" onclick="hideDivById('cita')">Haz tu cita</a></li>
+            <div class="container" id="login">
+                <!--<li><a href="{{url_for('login')}}">Login</a></li>-->
+                <!--<li><img src="{{url_for('static', filename='images/unnamed.png')}}" width="40" height="40" alt="">-->
+                <li><a onclick="logout()" href="">Logout</a></li>
+            </div>
+        </ul>
         </div>
-    </div>
+    </nav>
 
-
-    <div name="linkers" class="nav">
-        <a href="#" onclick="hideDivById('inicio')">Inicio</a>
-        <a href="#" onclick="hideDivById('productos')">Tratamientos</a>
-        <a href="#" onclick="hideDivById('about')">Conócenos</a>
-        <a href="#" onclick="hideDivById('contacto')">Contáctanos</a>
-        <a href="#" onclick="hideDivById('cita')">Haz tu cita</a>
-
-    </div>
-
-    <div><span id="user"></span></div>
+    <div><span id="user"></span></>
 
     <!--
     <div class="main">
