@@ -324,4 +324,40 @@ margin-bottom:0;
   }
   
   
+
+
   
+  /* CONÓCENOS */
+  
+  .about-us {
+      background-color: #feb40a;
+      color: black;
+    }
+
+    .about-title {
+        text-align: center;
+        padding: 30px;
+    }
+
+    .mision-vision-titles {
+        display: flex;
+    }
+
+    .mision-vision-titles h2 {
+        flex: 1;
+        text-align:center;
+    }
+
+    .mision-vision-text {
+        display: flex;
+    }
+
+    .mision-vision-text p {
+        flex: 1;
+        text-align:center;
+    }
+
+    .valores {
+        text-align: center;
+        padding: 30px;
+    }
