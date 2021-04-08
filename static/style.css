@@ -36,13 +36,13 @@ body {
 .cabecera {
     width: 100%;
     display:flex;
-    position: relative;
+    position:relative;
     justify-content: center;
     align-items: center;
     background: linear-gradient(to bottom,#122b53, #173A7C);
     color: white;
     left: 0%;
-    margin: 0%;
+    margin: 0px;
 }
 
 .empresa {
@@ -162,8 +162,8 @@ html {
 }
   
 .footer-basic .social {
-text-align:center;
-padding-bottom:25px;
+    text-align:center;
+    padding-bottom:25px;
 }
 
 .footer-basic .social > a {
@@ -369,8 +369,8 @@ margin-bottom:0;
     height: auto;
     background: linear-gradient(to bottom,#0d2042, #173A7C);
     padding: 60px 45px;
-    position: absolute;
-    top: 50%;
+    position:absolute;
+    top: 300px;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 40px;
@@ -422,7 +422,6 @@ margin-bottom:0;
     padding-left: 30px;
     border: none;
     border-radius: 10px;
-
 }
 
 .caja-boton-css{
@@ -448,4 +447,50 @@ margin-bottom:0;
 }
 
 
+/* CITA */
 
+.caja-cita {
+    max-width: 400px;
+    min-width: 320px;
+    width: auto;
+    height: auto;
+    background: linear-gradient(to bottom,#0d2042, #173A7C);
+    padding: 40px 70px;
+    position: relative;
+    left: 50%;
+    margin: 45px;
+    transform: translate(-50%, -0);
+    border-radius: 40px;
+    border-style:inset;
+    box-shadow: 0px 0px 20px 0px black;
+}
+
+.cajaci-input{
+    width: 100%;
+    padding:12px;
+    padding-left: 30px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.caja-inputs label{
+    color:#00AEBA;
+}
+
+.caja-inputs textarea{
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.caja-inputs h2{
+    color:#00AEBA;
+}
+
+.caja-inputs table{
+    color: #69572b;
+    background-color: #fdbb20;
+    border-radius: 10px;
+    text-align: center;
+    width: 100%;
+}
