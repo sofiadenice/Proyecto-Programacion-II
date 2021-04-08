@@ -36,11 +36,10 @@ body {
 .cabecera {
     width: 100%;
     display:flex;
-    /*position: relative;*/
     position: relative;
-    justify-content: /*space-between*/center;
+    justify-content: center;
     align-items: center;
-    background-color: #173A7C;
+    background: linear-gradient(to bottom,#122b53, #173A7C);
     color: white;
     left: 0%;
     margin: 0%;
@@ -361,3 +360,92 @@ margin-bottom:0;
         text-align: center;
         padding: 30px;
     }
+
+/* REGISTRO */
+
+.caja{
+    max-width: 350px;
+    width: 100%;
+    height: auto;
+    background: linear-gradient(to bottom,#0d2042, #173A7C);
+    padding: 60px 45px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 40px;
+    border-style:inset;
+    box-shadow: 0px 0px 20px 0px black;
+}
+.caja-titulo {
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 40px;
+    color: #00AEBA;
+    font-weight: bold;
+}
+
+.caja-link {
+    text-align: center;
+    font-size: 15px;
+    color: #00AEBA;
+    margin-top: 25px;
+    margin-bottom: 0px;
+}
+
+.caja-link a{
+    color: #00AEBA;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.caja-inputs{
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.caja-inputs i{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 15px;
+    color:#00AEBA;
+}
+
+::-webkit-input-placeholder{
+    color:rgb(180, 179, 179);
+}
+
+.caja-input{
+    width: 100%;
+    padding:12px;
+    padding-left: 30px;
+    border: none;
+    border-radius: 10px;
+
+}
+
+.caja-boton-css{
+    width: 55%;
+    margin: 19px auto 0;
+    background:#feb40a;
+    text-align: center;
+    padding: 12px;
+    border-radius: 20px;
+    position:relative;
+    left: 23%;
+    border-style: none;
+    color:#69572b;
+    font-weight: bold;
+    transition: transform .4s;
+    cursor:pointer;
+}
+
+.caja-boton-css:hover{
+    background:#fdbb20;
+    transition: transform 0.5s;
+    transform: scale(1.12);
+}
+
+
+

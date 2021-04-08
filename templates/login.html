@@ -6,26 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 </head>
 
-<body>
-    <h1>Login form</h1>
-    <hr>
-
-    <div class="container">
-        <h2>login form</h2>
-        <label for="user">user</label>
-        <input type="text" name="user" id="user" placeholder="user...">
-        <label for="passw">password</label>
-        <input type="text" name="passw" id="passw" placeholder="password...">
-        <button onclick="checkLogin()">log in</button>
-    </div>
-
-    <br>
-    <hr>
-    <div>
-        <a href="{{url_for('register')}}">go to registration</a>
+<div>
+    <div class="caja">
+        <div class="caja-titulo">
+            Acceder
+        </div>
+        
+        <div class="caja-campos">
+            <div class="caja-inputs">
+                <input type="text" name="user" id="user" placeholder="Usuario..." class ="caja-input">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="caja-inputs">
+                <input type="text" name="passw" id="passw" placeholder="Contraseña..." class ="caja-input">
+                <i class="fas fa-lock"></i>
+            </div>
+            <div class="caja-boton">
+                <button onclick="checkLogin()" class="caja-boton-css">Iniciar sesión</button>
+            </div>
+            <div class = "caja-link">
+                ¿No tienes una cuenta?
+                <a href="{{url_for('register')}}">Regístrate</a>
+            </div>
+        </div>
     </div>
 
     <script src="{{url_for('static', filename='script.js')}}"></script>

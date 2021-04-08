@@ -6,23 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>registration</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="/static/style.css">
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <!--<link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">-->
 </head>
 
 <body>
-    <div class="container">
-        <h2>registration form</h2>
-        <label for="user_reg">user</label>
-        <input type="text" name="user" id="user_reg" placeholder="user...">
-        <label for="passw_reg">password</label>
-        <input type="text" name="passw" id="passw_reg" placeholder="password...">
-        <button onclick="registerNewUser()">register</button>
-    </div>
+    <div class="caja">
+        <div class="caja-titulo">
+            Registro
+        </div>
+            <!--<h2>registration form</h2>-->
 
-    <br>
-
-    <div>
-        <a href="{{url_for('login')}}">go to login</a>
+        <div class = "caja-campos">
+            <div class="caja-inputs">
+               <!-- <label for="user_reg">user</label>-->
+                <input type="text" name="user" id="user_reg" placeholder="Usuario..." class ="caja-input">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="caja-inputs">
+                <!--<label for="passw_reg">password</label>-->
+                <input type="text" name="passw" id="passw_reg" placeholder="Contraseña..." class ="caja-input">
+                <i class="fas fa-lock"></i>
+            </div>
+            <div class="caja-boton">
+                <button onclick="registerNewUser()" class="caja-boton-css">Registrarme</button>
+            </div>
+            <div class = "caja-link">
+                ¿Estás registrado?
+                <a href="{{url_for('login')}}">Inicia sesión</a>
+            </div>
+        </div>
     </div>
 
     <script src="{{url_for('static', filename='script.js')}}"></script>
