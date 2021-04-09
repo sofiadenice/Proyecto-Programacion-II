@@ -13,29 +13,31 @@
 </head>
 
 <body>
-    <div class="caja">
-        <div class="caja-titulo">
-            Registro
-        </div>
-            <!--<h2>registration form</h2>-->
+    <div class="registration-body">
+        <div class="caja">
+            <div class="caja-titulo">
+                Registro
+            </div>
+                <!--<h2>registration form</h2>-->
 
-        <div class = "caja-campos">
-            <div class="caja-inputs">
-               <!-- <label for="user_reg">user</label>-->
-                <input type="text" name="user" id="user_reg" placeholder="Usuario..." class ="caja-input">
-                <i class="fas fa-user"></i>
-            </div>
-            <div class="caja-inputs">
-                <!--<label for="passw_reg">password</label>-->
-                <input type="text" name="passw" id="passw_reg" placeholder="Contraseña..." class ="caja-input">
-                <i class="fas fa-lock"></i>
-            </div>
-            <div class="caja-boton">
-                <button onclick="registerNewUser()" class="caja-boton-css">Registrarme</button>
-            </div>
-            <div class = "caja-link">
-                ¿Estás registrado?<br display="none">
-                <a href="{{url_for('login')}}">Inicia sesión</a>
+            <div class = "caja-campos">
+                <div class="caja-inputs">
+                <!-- <label for="user_reg">user</label>-->
+                    <input type="text" name="user" id="user_reg" placeholder="Usuario..." class ="caja-input">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="caja-inputs">
+                    <!--<label for="passw_reg">password</label>-->
+                    <input type="text" name="passw" id="passw_reg" placeholder="Contraseña..." class ="caja-input">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="caja-boton">
+                    <button onclick="registerNewUser()" class="caja-boton-css">Registrarme</button>
+                </div>
+                <div class = "caja-link">
+                    ¿Estás registrado?<br display="none">
+                    <a href="{{url_for('login')}}">Inicia sesión</a>
+                </div>
             </div>
         </div>
     </div>
