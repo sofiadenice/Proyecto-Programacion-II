@@ -1,9 +1,13 @@
 const toggleButton = document.getElementsByClassName('menu-desplegable')[0]
 const navbarLinks = document.getElementsByClassName('nav')[0]
 
-toggleButton.addEventListener('click', () => {
-  navbarLinks.classList.toggle('active')
-})
+if (window.location.href.includes("dashboard")) {
+    toggleButton.addEventListener('click', () => {
+        navbarLinks.classList.toggle('active')
+      })
+}
+
+
 
 /*
 ************* register functionality begin
@@ -56,14 +60,14 @@ function checkLogin() {
                 window.location.href = "http://127.0.0.1:5000/dashboard";
                 //window.location.href = "http://heroku:5000/dashboard";
             } else {
-                alert("user or password are not correct");
+                alert("Usuario o contraseña no son correctos");
             }
 
         } else {
-            alert("password must not be empty");
+            alert("El campo de contraseña no debe estar vacío");
         }
     } else {
-        alert("user must not be empty");
+        alert("El campo de usuario no debe estar vacío");
     }
 
 }
@@ -126,7 +130,7 @@ function checkForValidLoginSession() {
     */
 
     if (sessionStorage.getItem("loggedUser") == null) {
-        alert("Debe iniciar sesión para realizar esa función");
+        alert("Debe iniciar sesión para acceder a la página");
         window.location.href = "http://127.0.0.1:5000/login";
         //window.location.href = "http://heroku:5000/login";
     }
@@ -323,6 +327,8 @@ function loadCitaDataByUser(pCurrentUser) {
     var citaArray
     if (localStorage.getItem("lAddCitaArray") !== null) {
         citaArray = JSON.parse(localStorage.getItem("lAddCitaArray"));
+    } else {
+        citaArray = []
     }
 
     var userTableClient = document.getElementById("userTableClient")
@@ -367,11 +373,11 @@ function agregarCita(){
     } 
     
     cleanFormCita()
-    alert(fecha)
+    //alert(fecha)
     addResultToCitaTable(fecha, nombre, apellido, correo, telefono, motivo, hora)
     addResultToCitaStorage(fecha, nombre, apellido, correo, telefono, motivo, hora)
     return
-    alert("Pausa")
+    //alert("Pausa")
 }
 
 function add() {
@@ -486,4 +492,22 @@ function hideAllDivW3Includes() {
     for (var element of elementArray) {
         element.style.display = "none"
     }
+}
+
+function sendMail() {
+    var nombre = document.getElementById("nombre").value
+    var correo = document.getElementById("email").value
+    var telefono = document.getElementById("phone").value
+    var mensaje = document.getElementById("message").value
+    cleanFormMail()
+    //alert("Abriendo correo")
+    
+    window.open('mailto:clidente@gmail.com?subject='+ 'Consulta de ' + nombre +'&body=' + mensaje +'\x250D\u00250A'+'Correo de contacto: ' + correo +'\x250D\u00250A'+ 'Teléfono de contacto: ' + telefono);
+}
+
+function cleanFormMail() {
+    document.getElementById("nombre").value = ""
+    document.getElementById("email").value = ""
+    document.getElementById("phone").value = ""
+    document.getElementById("message").value = ""
 }

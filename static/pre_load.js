@@ -51,4 +51,5 @@ function goToDashboard() {
 }
 
 preLoadUsers()
-preLoadAddResults()
+//preLoadAddResults()
+goToDashboard()
