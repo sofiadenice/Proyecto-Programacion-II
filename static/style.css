@@ -515,7 +515,7 @@ margin-bottom:0;
 
 
 .caja-cita {
-    max-width: 400px;
+    max-width: 40%;
     min-width: 320px;
     width: auto;
     height: auto;
@@ -546,6 +546,7 @@ margin-bottom:0;
 .caja-inputs textarea{
     margin-top: 10px;
     border-radius: 10px;
+    width: 100%;
 }
 
 .caja-inputs h2{
@@ -555,9 +556,12 @@ margin-bottom:0;
 .caja-inputs table{
     color: #69572b;
     background-color: #fdbb20;
-    border-radius: 10px;
-    text-align: center;
-    width: 100%;
+    border-radius: 0px;
+    text-align:center;
+    max-width: 100%;
+    border-style: inset;
+    border: "1";
+    position: center;
 }
 
 .caja-cita .caja-titulo{

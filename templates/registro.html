@@ -6,23 +6,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clidente | Registro</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js" defer></script>
 </head>
 
 <body>
-    <h1>Registro</h1>
-
-    <div><span id="user"></span></div>
-    <div><a href="{{url_for('dashboard')}}">Inicio</a></div>
-
-    <div class="main">
-    
-        <div class="main__section" id="main_section">
-            <div style="display:block" id="client" name="w3includes" w3-include-html="{{url_for('addcli')}}">
+    <nav class="cabecera">
+        <div class="empresa">Clidente</div>
+        <a href="#" class="menu-desplegable">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </a>
+        <div name="linkers" class="nav">
+        <ul>
+            <li><a href="{{url_for('dashboard')}}">Inicio</a></li>
+            <div class="container" id="login">
+                <!--<li><a href="{{url_for('login')}}">Login</a></li>-->
+                <!--<li><img src="{{url_for('static', filename='images/unnamed.png')}}" width="40" height="40" alt="">-->
+                <li><a onclick="logout()" href="">Logout</a></li>
             </div>
-            <div style="display:block" id="admin" name="w3includes" w3-include-html="{{url_for('addadm')}}">
+        </ul>
+        </div>
+    </nav>
+
+    <div><span class="saludo-user" id="user"></span></div>
+
+    <div class="caja">
+        <div class="main">
+            <div class="main__section" id="main_section">
+                <div style="display:block" id="client" name="w3includes" w3-include-html="{{url_for('addcli')}}">
+                </div>
+                <div style="display:block" id="admin" name="w3includes" w3-include-html="{{url_for('addadm')}}">
+                </div>
             </div>
         </div>
-
     </div>
 
     <script src="https://www.w3schools.com/lib/w3.js"></script>
