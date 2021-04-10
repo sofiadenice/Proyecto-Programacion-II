@@ -433,7 +433,7 @@ margin-bottom:0;
 /* REGISTRO */
 
 .caja{
-    max-width: 40%;
+    max-width: 30%;
     width: 100%;
     height: auto;
     background: linear-gradient(to bottom,#0d2042, #173A7C);
@@ -525,7 +525,7 @@ margin-bottom:0;
 
 
 .caja-cita {
-    max-width: 40%;
+    max-width: 80%;
     min-width: 320px;
     width: auto;
     height: auto;
@@ -571,8 +571,10 @@ margin-bottom:0;
     max-width: 100%;
     border-style: inset;
     border: "1";
-    position: center;
+    position: relative;
+    margin: auto;
 }
+
 
 .caja-cita .caja-titulo{
     font-size:x-large;
