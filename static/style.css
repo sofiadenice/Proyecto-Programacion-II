@@ -525,7 +525,7 @@ margin-bottom:0;
 
 
 .caja-cita {
-    max-width: 80%;
+    max-width: 40%;
     min-width: 320px;
     width: auto;
     height: auto;
@@ -601,4 +601,24 @@ margin-bottom:0;
 
 .caja-contacto .caja-titulo{
     font-size:x-large;
+}
+
+
+
+/* MI CUENTA */
+
+.caja-cuenta {
+    max-width: 80%;
+    min-width: 320px;
+    width: auto;
+    height: auto;
+    background: linear-gradient(to bottom,#0d2042, #173A7C);
+    padding: 40px 70px;
+    position: relative;
+    left: 46.2%;
+    margin: 45px;
+    transform: translate(-50%, -0);
+    border-radius: 40px;
+    border-style:inset;
+    box-shadow: 0px 0px 20px 0px black;
 }
