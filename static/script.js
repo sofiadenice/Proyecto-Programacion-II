@@ -35,8 +35,8 @@ function registerNewUser() {
 
     localStorage.setItem("lUserArray", JSON.stringify(userArray));
 
-    window.location.href = "http://127.0.0.1:5000/login"
-    //window.location.href = "http://heroku:5000/login";
+    //window.location.href = "http://127.0.0.1:5000/login"
+    window.location.href = "https://proyecto-programacion-dos.herokuapp.com/login";
 }
 
 /*
@@ -57,8 +57,8 @@ function checkLogin() {
                 //need a method to get the role and send it into createSessionUser below
                 var role = getUserRole(user, password, userArray)
                 createSessionUser(user, password, role)
-                window.location.href = "http://127.0.0.1:5000/dashboard";
-                //window.location.href = "http://heroku:5000/dashboard";
+                //window.location.href = "http://127.0.0.1:5000/dashboard";
+                window.location.href = "https://proyecto-programacion-dos.herokuapp.com/dashboard";
             } else {
                 alert("Usuario o contraseña no son correctos");
             }
@@ -131,8 +131,8 @@ function checkForValidLoginSession() {
 
     if (sessionStorage.getItem("loggedUser") == null) {
         alert("Debe iniciar sesión para acceder a la página");
-        window.location.href = "http://127.0.0.1:5000/login";
-        //window.location.href = "http://heroku:5000/login";
+        //window.location.href = "http://127.0.0.1:5000/login";
+        window.location.href = "https://proyecto-programacion-dos.herokuapp.com/login";
     }
 }
 
@@ -179,8 +179,8 @@ function modifyRegistroForRole(pCurrentRole) {
 
 function logout() {
     sessionStorage.removeItem("loggedUser")
-    window.location.href = "http://127.0.0.1:5000/"
-    //window.location.href = "http://heroku:5000/";
+    //window.location.href = "http://127.0.0.1:5000/"
+    window.location.href = "https://proyecto-programacion-dos.herokuapp.com/";
 }
 
 /*

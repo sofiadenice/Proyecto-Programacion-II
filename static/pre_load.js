@@ -46,8 +46,8 @@ function preLoadAddResults() {
 }
 
 function goToDashboard() {
-    window.location = "http://127.0.0.1:5000/dashboard"
-    //window.location.href = "http://heroku:5000/login";
+    //window.location = "http://127.0.0.1:5000/dashboard"
+    window.location.href = "https://proyecto-programacion-dos.herokuapp.com/dashboard";
 }
 
 preLoadUsers()
