@@ -207,23 +207,25 @@ footer{
     
 }
 
-.footer-basic .social > i {
+.footer-basic .social > a {
     font-size:24px;
-    width:40px;
-    height:40px;
-    line-height:45px;
+    max-width:50px;
+    max-height:50px;
     display:inline-block;
     text-align:center;
-    border-radius:50%;
+    /*border-radius:50%;
     border:1px solid #ccc;
+    margin: auto;
     margin-left: 0px;
     margin-right: 0px;
     color:inherit;
-    opacity:0.75;
+    opacity:0.75;*/
 }
 
-.footer-basic .social > i:hover {
+.footer-basic .social > a:hover {
     opacity:0.9;
+    color: #00AEBA;
+    font-size: 17px;
 }
 
 .footer-basic .copyright {
@@ -381,11 +383,8 @@ margin-bottom:0;
   
   .about-us {
     background-color: white;
-    background-image: url(../static/images/fondo2.png); 
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
     color: black;
+    padding: 20px;
     }
 
     .about-title {
@@ -416,6 +415,17 @@ margin-bottom:0;
         padding: 30px;
     }
 
+    .team{
+        padding: 50px;
+        background: linear-gradient(to bottom,white  0px,#e6dfdf);
+        text-align: center;
+        position: relative;
+    }
+
+    .team li{
+        list-style: none;
+    }
+
 
 
 
@@ -423,7 +433,7 @@ margin-bottom:0;
 /* REGISTRO */
 
 .caja{
-    max-width: 350px;
+    max-width: 40%;
     width: 100%;
     height: auto;
     background: linear-gradient(to bottom,#0d2042, #173A7C);
@@ -572,7 +582,7 @@ margin-bottom:0;
 /* CONTACTO */
 
 .caja-contacto {
-    max-width: 400px;
+    max-width: 40%;
     min-width: 320px;
     width: auto;
     height: auto;
