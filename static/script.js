@@ -199,6 +199,7 @@ if (window.location.href.includes("registro")) {
         const observer = new MutationObserver(function () {
             var currentLoggedUser = getCurrentLoggedUser()
             loadAddDataFromAllUsers()
+            loadAddDataFromTratamiento()
             observer.disconnect()
         });
 
@@ -577,4 +578,76 @@ function cleanFormMail() {
     document.getElementById("email").value = ""
     document.getElementById("phone").value = ""
     document.getElementById("message").value = ""
+}
+//Function for adding new treatments
+
+function agregarTratamiento(){
+    var nombre = document.getElementById("nombreT").value
+    var descripcion = document.getElementById("descripcionT").value
+    var imagen = document.getElementById("imagenT").value
+    
+    cleanFormTratamientos()
+    //alert(fecha)
+    addResultToTratamientoTable(nombre,descripcion, imagen)
+    addResultToTratamientoStorage(nombre,descripcion, imagen)
+    return
+    //alert("Pausa")
+}
+function cleanFormTratamientos() {
+    document.getElementById("nombreT").value = ""
+    document.getElementById("descripcionT").value = ""
+    document.getElementById("imagenT").value = ""
+}
+
+function addResultToTratamientoTable(nombre,descripcion, imagen) {
+    
+    var myTable = document.getElementById("tableTratamientos")
+
+    var row = myTable.insertRow(1)
+
+    row.insertCell(0).innerHTML = nombre;
+    row.insertCell(1).innerHTML = descripcion;
+    row.insertCell(2).innerHTML = imagen;
+
+}
+
+function addResultToTratamientoStorage(nombre,descripcion, imagen){
+    var addTratamientoArray = []
+
+
+    if (localStorage.getItem("lAddTratamientoArray") !== null) {
+        addTratamientoArray = JSON.parse(localStorage.getItem("lAddTratamientoArray"));
+    }
+
+    var current_add_tratamiento = {
+        
+        nombreT: nombre,
+        descripcionT: descripcion,
+        imagenT: imagen
+    }
+
+    addTratamientoArray.push(current_add_tratamiento)
+    localStorage.setItem("lAddTratamientoArray", JSON.stringify(addTratamientoArray));
+}
+function loadAddDataFromTratamiento() {
+    var addTratamientoArray
+    if (localStorage.getItem("lAddTratamientoArray") !== null) {
+        addTratamientoArray = JSON.parse(localStorage.getItem("lAddTratamientoArray"));
+    }
+
+    var tableTratamiento = document.getElementById("tableTratamientos")
+    var row
+    var index = 0;
+    //var tableIndex = addResultArray
+
+    for (var addResult of addTratamientoArray) {
+        row = tableTratamientos.insertRow(1)
+
+        row.insertCell(0).innerHTML = addResult.nombreT;
+        row.insertCell(1).innerHTML = addResult.descripcionT;
+        row.insertCell(2).innerHTML = addResult.imagenT;
+        row.insertCell(3).innerHTML = "<button onclick='modifyOnElementByIndex(" + index + ")'>modify</button><input type='hidden' id='" + index + "'>";
+        row.insertCell(4).innerHTML = "<button onclick='deleteElementByIndex(" + index + ")'>delete</button><input type='hidden' id='" + index + "'>";
+        index++
+    }
 }
