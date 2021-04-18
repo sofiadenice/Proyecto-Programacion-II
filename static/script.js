@@ -35,8 +35,8 @@ function registerNewUser() {
 
     localStorage.setItem("lUserArray", JSON.stringify(userArray));
 
-    //window.location.href = "http://127.0.0.1:5000/login"
-    window.location.href = "https://proyecto-programacion-dos.herokuapp.com/login";
+    window.location.href = "http://127.0.0.1:5000/login"
+    //window.location.href = "https://proyecto-programacion-dos.herokuapp.com/login";
 }
 
 /*
@@ -57,8 +57,8 @@ function checkLogin() {
                 //need a method to get the role and send it into createSessionUser below
                 var role = getUserRole(user, password, userArray)
                 createSessionUser(user, password, role)
-                //window.location.href = "http://127.0.0.1:5000/dashboard";
-                window.location.href = "https://proyecto-programacion-dos.herokuapp.com/dashboard";
+                window.location.href = "http://127.0.0.1:5000/dashboard";
+                //window.location.href = "https://proyecto-programacion-dos.herokuapp.com/dashboard";
             } else {
                 alert("Usuario o contraseña no son correctos");
             }
@@ -131,8 +131,8 @@ function checkForValidLoginSession() {
 
     if (sessionStorage.getItem("loggedUser") == null) {
         alert("Debe iniciar sesión para acceder a la página");
-        //window.location.href = "http://127.0.0.1:5000/login";
-        window.location.href = "https://proyecto-programacion-dos.herokuapp.com/login";
+        window.location.href = "http://127.0.0.1:5000/login";
+        //window.location.href = "https://proyecto-programacion-dos.herokuapp.com/login";
     }
 }
 
@@ -179,8 +179,8 @@ function modifyRegistroForRole(pCurrentRole) {
 
 function logout() {
     sessionStorage.removeItem("loggedUser")
-    //window.location.href = "http://127.0.0.1:5000/"
-    window.location.href = "https://proyecto-programacion-dos.herokuapp.com/";
+    window.location.href = "http://127.0.0.1:5000/"
+    //window.location.href = "https://proyecto-programacion-dos.herokuapp.com/";
 }
 
 /*
@@ -225,7 +225,7 @@ function loadAddDataFromAllUsers() {
         row.insertCell(2).innerHTML = addResult.nombre;
         row.insertCell(3).innerHTML = addResult.apellido;
         row.insertCell(4).innerHTML = addResult.correo;
-        row.insertCell(5).innerHTML = addResult.teléfono;
+        row.insertCell(5).innerHTML = addResult.telefono;
         row.insertCell(6).innerHTML = addResult.motivo;
         row.insertCell(7).innerHTML = addResult.hora;
         row.insertCell(8).innerHTML = "<button onclick='modifyOnElementByIndex(" + index + ")'>modify</button><input type='hidden' id='" + index + "'>";
@@ -244,9 +244,9 @@ function deleteElementByIndex(pIndex) {
 }
 
 function deleteElementFromLocalStorage(pIndex) {
-    var addResultArray = JSON.parse(localStorage.getItem("lAddResultArray"))
+    var addResultArray = JSON.parse(localStorage.getItem("lAddCitaArray"))
     addResultArray.splice(pIndex, 1)
-    localStorage.setItem("lAddResultArray", JSON.stringify(addResultArray))
+    localStorage.setItem("lAddCitaArray", JSON.stringify(addResultArray))
 }
 
 function deleteElementFromTable(pIndex) {
@@ -261,14 +261,81 @@ function modifyOnElementByIndex(pIndex) {
     var parent = getElementParent(element, 2)
     console.log(parent.children)
     var children = parent.children
-    children[1].innerHTML = "<input type='number' id='inpNum" + pIndex + "' value='" + children[1].innerText + "'>"
-    children[2].innerHTML = "<input type='number' id='inpNum" + pIndex + "' value='" + children[2].innerText + "'>"
-    children[4].innerHTML = "<button onclick='modifyOffElementByIndex(" + pIndex + ",1)'>save</button><button onclick='modifyOffElementByIndex(" + pIndex + ",0)'>modify off</button><input type='hidden' id='" + pIndex + "'>"
+    children[1].innerHTML = "<input type='text' id='fecha" + pIndex + "' value='" + children[1].innerText + "'>"
+    children[2].innerHTML = "<input type='text' id='nombre" + pIndex + "' value='" + children[2].innerText + "'>"
+    children[3].innerHTML = "<input type='text' id='apellido" + pIndex + "' value='" + children[3].innerText + "'>"
+    children[4].innerHTML = "<input type='text' id='correo" + pIndex + "' value='" + children[4].innerText + "'>"
+    children[5].innerHTML = "<input type='text' id='telefono" + pIndex + "' value='" + children[5].innerText + "'>"
+    children[6].innerHTML = "<input type='text' id='motivo" + pIndex + "' value='" + children[6].innerText + "'>"
+    children[7].innerHTML = "<input type='text' id='hora" + pIndex + "' value='" + children[7].innerText + "'>"
+    children[8].innerHTML = "<button onclick='modifyOffElementByIndex(" + pIndex + ",1)'>save</button><button onclick='modifyOffElementByIndex(" + pIndex + ",0)'>modify off</button><input type='hidden' id='" + pIndex + "'>"
 }
 
+
+
+
+
+/* ----------------------------------------------------------------*/
 function modifyOffElementByIndex(pIndex, pSave) {
+    var addResultArray
+    if (localStorage.getItem("lAddCitaArray") !== null) {
+        addResultArray = JSON.parse(localStorage.getItem("lAddCitaArray"));
+    }
 
+    var element = document.getElementById(pIndex)
+    var parent = getElementParent(element, 2)
+    var children = parent.children
+
+    if(pSave===0){
+        //modify off
+        children[1].innerHTML = addResultArray[pIndex].fecha
+        children[2].innerHTML = addResultArray[pIndex].nombre
+        children[3].innerHTML = addResultArray[pIndex].apellido
+        children[4].innerHTML = addResultArray[pIndex].correo
+        children[5].innerHTML = addResultArray[pIndex].telefono
+        children[6].innerHTML = addResultArray[pIndex].motivo
+        children[7].innerHTML = addResultArray[pIndex].hora
+        children[8].innerHTML = "<button onclick='modifyOnElementByIndex(" + pIndex + ")'>modify</button><input type='hidden' id='" + pIndex + "'>";
+
+    } else {
+        //save
+        var input1 = document.getElementById("fecha"+pIndex).value
+        var input2 = document.getElementById("nombre"+pIndex).value
+        var input3 = document.getElementById("apellido"+pIndex).value
+        var input4 = document.getElementById("correo"+pIndex).value
+        var input5 = document.getElementById("telefono"+pIndex).value
+        var input6 = document.getElementById("motivo"+pIndex).value
+        var input7 = document.getElementById("hora"+pIndex).value
+       
+
+        addResultArray[pIndex].fecha = input1
+        addResultArray[pIndex].nombre = input2
+        addResultArray[pIndex].apellido = input3
+        addResultArray[pIndex].correo = input4
+        addResultArray[pIndex].telefono = input5
+        addResultArray[pIndex].motivo = input6
+        addResultArray[pIndex].hora = input7
+
+
+        children[1].innerHTML = input1
+        children[2].innerHTML = input2
+        children[3].innerHTML = input3
+        children[4].innerHTML = input4
+        children[5].innerHTML = input5
+        children[6].innerHTML = input6
+        children[7].innerHTML = input7
+        children[8].innerHTML = "<button onclick='modifyOnElementByIndex(" + pIndex + ")'>modify</button><input type='hidden' id='" + pIndex + "'>";
+
+        localStorage.setItem("lAddCitaArray", JSON.stringify(addResultArray))
+    }
 }
+
+
+
+
+
+/*------------------------------------------------------------------*/
+
 
 function getElementParent(pElement, pGen) {
     var parent = pElement
