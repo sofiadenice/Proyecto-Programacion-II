@@ -588,7 +588,7 @@ function agregarTratamiento(){
     
     cleanFormTratamientos()
     //alert(fecha)
-    addResultToTratamientoTable(nombre,descripcion, imagen)
+    //addResultToTratamientoTable(nombre,descripcion, imagen)
     addResultToTratamientoStorage(nombre,descripcion, imagen)
     return
     //alert("Pausa")
@@ -599,7 +599,7 @@ function cleanFormTratamientos() {
     document.getElementById("imagenT").value = ""
 }
 
-function addResultToTratamientoTable(nombre,descripcion, imagen) {
+/*function addResultToTratamientoTable(nombre,descripcion, imagen) {
     
     var myTable = document.getElementById("tableTratamientos")
 
@@ -608,12 +608,15 @@ function addResultToTratamientoTable(nombre,descripcion, imagen) {
     row.insertCell(0).innerHTML = nombre;
     row.insertCell(1).innerHTML = descripcion;
     row.insertCell(2).innerHTML = imagen;
+    row.insertCell(3).innerHTML = "<button onclick='modifyOnElementByIndexT(" + index + ")'>modify</button><input type='hidden' id='" + index + "'>";
+    row.insertCell(4).innerHTML = "<button onclick='deleteElementByIndexT(" + index + ")'>delete</button><input type='hidden' id='" + index + "'>";
+        
 
 }
-
+*/
 function addResultToTratamientoStorage(nombre,descripcion, imagen){
+    
     var addTratamientoArray = []
-
 
     if (localStorage.getItem("lAddTratamientoArray") !== null) {
         addTratamientoArray = JSON.parse(localStorage.getItem("lAddTratamientoArray"));
@@ -630,14 +633,16 @@ function addResultToTratamientoStorage(nombre,descripcion, imagen){
     localStorage.setItem("lAddTratamientoArray", JSON.stringify(addTratamientoArray));
 }
 function loadAddDataFromTratamiento() {
-    var addTratamientoArray
+    
+    var addTratamientoArray = []
+    
     if (localStorage.getItem("lAddTratamientoArray") !== null) {
         addTratamientoArray = JSON.parse(localStorage.getItem("lAddTratamientoArray"));
     }
 
-    var tableTratamiento = document.getElementById("tableTratamientos")
+    var tableTratamientos = document.getElementById("tableTratamientos")
     var row
-    var index = 0;
+    var indexT = 0;
     //var tableIndex = addResultArray
 
     for (var addResult of addTratamientoArray) {
@@ -646,8 +651,91 @@ function loadAddDataFromTratamiento() {
         row.insertCell(0).innerHTML = addResult.nombreT;
         row.insertCell(1).innerHTML = addResult.descripcionT;
         row.insertCell(2).innerHTML = addResult.imagenT;
-        row.insertCell(3).innerHTML = "<button onclick='modifyOnElementByIndex(" + index + ")'>modify</button><input type='hidden' id='" + index + "'>";
-        row.insertCell(4).innerHTML = "<button onclick='deleteElementByIndex(" + index + ")'>delete</button><input type='hidden' id='" + index + "'>";
-        index++
+        row.insertCell(3).innerHTML = "<button onclick='modifyOnElementByIndexT(" + indexT + ")'>modify</button><input type='hidden' id='" + indexT + "'>";
+        row.insertCell(4).innerHTML = "<button onclick='deleteElementByIndexT(" + indexT + ")'>delete</button><input type='hidden' id='" + indexT + "'>";
+        indexT++
+    }
+}
+
+function deleteElementByIndexT(pIndexT) {
+    //que es lo que implica eliminar un elemento?
+    //1. quitarlo del local storage
+    deleteElementFromLocalStorageT(pIndexT)
+    //2. quitarlo de la tabla
+    deleteElementFromTableT(pIndexT)
+    location = location
+
+}
+
+function deleteElementFromLocalStorageT(pIndexT) {
+    var addResultArrayT = JSON.parse(localStorage.getItem("lAddTratamientoArray"))
+    addResultArrayT.splice(pIndexT, 1)
+    localStorage.setItem("lAddTratamientoArray", JSON.stringify(addResultArrayT))
+}
+
+function deleteElementFromTableT(pIndexT) {
+    var addResultArrayT = JSON.parse(localStorage.getItem("lAddTratamientoArray"))
+    var logArray = addResultArrayT.length
+    var rowT = -pIndexT  + logArray + 1
+    document.getElementById("tableTratamientos").deleteRow(rowT);    
+    /*var element = document.getElementById(pIndexT)
+    var parent = getElementParent(element, 3)
+    var child = getElementParent(element, 2)
+   parent.removeChildT(child) */
+}
+
+function modifyOnElementByIndexT(pIndexT) {
+    var element = document.getElementById(pIndexT)
+    var parent = getElementParent(element, 2)
+    console.log(parent.children)
+    var children = parent.children
+    children[0].innerHTML = "<input type='text' id='nombreT" + pIndexT + "' value='" + children[0].innerText + "'>"
+    children[1].innerHTML = "<input type='text' id='descripcionT" + pIndexT + "' value='" + children[1].innerText + "'>"
+    children[2].innerHTML = "<input type='text' id='imagenT" + pIndexT + "' value='" + children[2].innerText + "'>"
+    children[3].innerHTML = "<button onclick='modifyOffElementByIndexT(" + pIndexT + ",1)'>save</button><button onclick='modifyOffElementByIndexT(" + pIndexT + ",0)'>modify off</button><input type='hidden' id='" + pIndexT + "'>"
+}
+
+
+
+
+
+/* ----------------------------------------------------------------*/
+function modifyOffElementByIndexT(pIndexT, pSave) {
+    var addResultArrayT
+    if (localStorage.getItem("lAddTratamientoArray") !== null) {
+        addResultArrayT = JSON.parse(localStorage.getItem("lAddTratamientoArray"));
+    }
+
+    var element = document.getElementById(pIndexT)
+    var parent = getElementParent(element, 2)
+    var children = parent.children
+
+    if(pSave===0){
+        //modify off
+        children[0].innerHTML = addResultArrayT[pIndexT].nombreT
+        children[1].innerHTML = addResultArrayT[pIndexT].descripcionT
+        children[2].innerHTML = addResultArrayT[pIndexT].imagenT
+        children[3].innerHTML = "<button onclick='modifyOnElementByIndexT(" + pIndexT + ")'>modify</button><input type='hidden' id='" + pIndexT + "'>";
+
+    } else {
+        //save
+        var input1 = document.getElementById("nombreT"+pIndexT).value
+        var input2 = document.getElementById("descripcionT"+pIndexT).value
+        var input3 = document.getElementById("imagenT"+pIndexT).value
+     
+       
+
+        addResultArrayT[pIndexT].nombreT = input1
+        addResultArrayT[pIndexT].descripcionT = input2
+        addResultArrayT[pIndexT].imagenT = input3
+ 
+
+
+        children[0].innerHTML = input1
+        children[1].innerHTML = input2
+        children[2].innerHTML = input3
+        children[3].innerHTML = "<button onclick='modifyOnElementByIndexT(" + pIndexT + ")'>modify</button><input type='hidden' id='" + pIndexT + "'>";
+
+        localStorage.setItem("lAddTratamientoArray", JSON.stringify(addResultArrayT))
     }
 }
